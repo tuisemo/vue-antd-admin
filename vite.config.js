@@ -25,11 +25,15 @@ export default defineConfig({
       "@": path.resolve(__dirname, "src"),
     },
   },
-  // proxy: {
-  //   "/api": {
-  //     target: "http://www.dev.com",
-  //     changeOrigin: true,
-  //     rewrite: path => path.replace(/^\/api/, ""),
-  //   },
-  // },
+  server: {
+    port: 3000,
+    open: true,
+    proxy: {
+      "/api": {
+        target: "http://www.dev.com",
+        changeOrigin: true,
+        rewrite: path => path.replace(/^\/api/, ""),
+      },
+    },
+  }
 });
